@@ -1,0 +1,92 @@
+{
+	{
+		"No.": 1
+		"Descripcion-Token": {
+			"Lexema": ?
+			"Tipo:": Error Lexico
+			"Fila": 1
+			"Columna": 3
+		}
+	},
+	{
+		"No.": 2
+		"Descripcion-Token": {
+			"Lexema": *
+			"Tipo:": Error Lexico
+			"Fila": 6
+			"Columna": 8
+		}
+	},
+	{
+		"No.": 3
+		"Descripcion-Token": {
+			"Lexema": ^
+			"Tipo:": Error Lexico
+			"Fila": 8
+			"Columna": 38
+		}
+	},
+	{
+		"No.": 4
+		"Descripcion-Token": {
+			"Lexema": +
+			"Tipo:": Error Lexico
+			"Fila": 26
+			"Columna": 11
+		}
+	},
+	{
+		"No.": 5
+		"Descripcion-Token": {
+			"Lexema": @
+			"Tipo:": Error Lexico
+			"Fila": 60
+			"Columna": 5
+		}
+	},
+	{
+		"No.": 6
+		"Descripcion-Token": {
+			"Lexema": ?
+			"Tipo:": Error Lexico
+			"Fila": 64
+			"Columna": 3
+		}
+	},
+	{
+		"No.": 7
+		"Descripcion-Token": {
+			"Lexema": *
+			"Tipo:": Error Lexico
+			"Fila": 69
+			"Columna": 8
+		}
+	},
+	{
+		"No.": 8
+		"Descripcion-Token": {
+			"Lexema": ^
+			"Tipo:": Error Lexico
+			"Fila": 71
+			"Columna": 38
+		}
+	},
+	{
+		"No.": 9
+		"Descripcion-Token": {
+			"Lexema": +
+			"Tipo:": Error Lexico
+			"Fila": 89
+			"Columna": 11
+		}
+	},
+	{
+		"No.": 10
+		"Descripcion-Token": {
+			"Lexema": @
+			"Tipo:": Error Lexico
+			"Fila": 123
+			"Columna": 5
+		}
+	},
+}

@@ -1,6 +1,7 @@
 from Instrucciones.aritmeticas import *
 from Instrucciones.trigonometricas import *
 from Instrucciones.errores import *
+from Instrucciones.Texto import *
 from Abstract.lexema import *
 from Abstract.numero import *
 import os
@@ -14,7 +15,12 @@ reserved = {
     'ACTUALIZARUNICO'   : 'ActualizarUnico', 
     'ELIMINARUNICO'     : 'EliminarUnico',
     'BUSCARTODO'        : 'BuscarTodo',
-    'BUSCARUNICO'       : 'BuscarUnico',    
+    'BUSCARUNICO'       : 'BuscarUnico',  
+    'RCONFIGURACION'    : 'Configuraciones',
+    'RTEXTO'            : 'texto',
+    'RCOLORFONDONODO'   : 'color-fondo-nodo',
+    'RCOLORFUENTENODO'  : 'color-fuente-nodo',
+    'RFORMANODO'        : 'forma-nodo',  
     'COMA'              : ',',
     'PUNTO'             : '.',
     'DPUNTO'            : ':',
@@ -153,6 +159,8 @@ def operar():
     operacion = ''
     n1 = ''
     n2 = ''
+    text = ''
+    
     while lista_lexemas:                            
         lexema = lista_lexemas.pop(0)       
         if lexema.operar(None) == 'Operacion':  
@@ -166,6 +174,31 @@ def operar():
             n2 = lista_lexemas.pop(0)
             if n2.operar(None) == '[':
                 n2 = operar()
+                
+        if lexema.operar(None) == 'texto':
+
+            tipo = 'texto'
+            text = lista_lexemas.pop(0)
+            return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
+
+        if lexema.operar(None) == 'color-fondo-nodo':
+
+            tipo = 'color-fondo-nodo'
+            text = lista_lexemas.pop(0)
+            return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
+
+        if lexema.operar(None) == 'color-fuente-nodo':
+
+            tipo = 'color-fuente-nodo'
+            text = lista_lexemas.pop(0)
+            return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
+
+        if lexema.operar(None) == 'forma-nodo':
+
+            tipo = 'forma-nodo'
+            text = lista_lexemas.pop(0)
+            return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
+        
         #Aqui ya armamos la funcion aritmetica y nos recibe lado dercho e izquierdo osea fila y columna
         if operacion and n1 and n2:
             return Aritmeticas(n1, n2, operacion, f'Inicio: {operacion.getFila()}:{operacion.getColumna()}', f'Fin: {n2.getFila()}:{n2.getColumna()}') 
@@ -185,14 +218,7 @@ def operar2():
         else:
             break
         
-    #for instruccion in instrucciones:
-        #print(instruccion.operar())
     return instrucciones
-        
-
-'''def getErrores():
-    global lista_errores
-    return lista_errores'''
     
 def getErrores():
     global lista_errores
@@ -217,173 +243,3 @@ def getErrores():
         f.write(dataErrores)
 
     
-def grafica(sumatoriaData):
-    global lista_auxiliar
-    global lista_errores
-    
-    lista_errores = []
-
-    while lista_auxiliar:
-
-        lexema =lista_auxiliar.pop(0)
-
-        if lexema.operar(None) == 'Texto':
-            textoTitulo = lista_auxiliar.pop(0)
-            print(textoTitulo.operar(None))
-        
-        elif lexema.operar(None) == 'Color-Fondo-Nodo':
-            colorNodo = lista_auxiliar.pop(0)
-            print(colorNodo.operar(None))
-
-        elif lexema.operar(None) == 'Color-Fuente-Nodo':
-            fuenteNodo = lista_auxiliar.pop(0)
-            print(fuenteNodo.operar(None))
-
-        elif lexema.operar(None) == 'Forma-Nodo':
-            formaNodo = lista_auxiliar.pop(0)
-            print(formaNodo.operar(None))
-    
-    
-
-    data = '''
-    digraph {\n
-    '''
-
-
-    #COLOR DEL NODO
-
-    color = colorNodo.operar(None).lower()
-
-    if color == "amarillo" or color == "#ffff00":
-        data += f'node[fillcolor = "yellow"'
-    
-    elif color == "rojo" or color == "#ff0000":
-        data += f'node[fillcolor = "red"'
-    
-    elif color == "verde" or color == "#008000":
-        data += f'node[fillcolor = "green"'
-    
-    elif color == "azul" or color == "0000ff":
-        data += f'node[fillcolor = "blue"'
-    
-    elif color == "celeste" or color == "#87ceeb":
-        data += f'node[fillcolor = "skyblue"'
-    
-    elif color == "negro" or color == "#000000":
-        data += f'node[fillcolor = "black"'
-    
-    elif color == "cafe" or color == "#a52a2a":
-        data += f'node[fillcolor = "brown"'
-    
-    elif color == "gris" or color == "#808080":
-        data += f'node[fillcolor = "gray"'
-    
-    elif color == "rosado" or color == "rosa" or color == "#ff0c0cb":
-        data += f'node[fillcolor = "pink"'
-    
-    elif color == "purpura" or color == "morado" or color == "#800080":
-        data += f'node[fillcolor = "purple"'
-    
-    elif color == "blanco" or color == "#ffffff":
-        data += f'node[fillcolor = "white"'
-    
-    elif color == "naranja" or color == "anaranjado" or color == "#ffa500":
-        data += f'node[fillcolor = "orange"'
-
-    #FUENTE COLOR NODO
-
-    fuente = fuenteNodo.operar(None).lower()
-
-    if fuente == "amarillo"  or fuente == "#ffff00":
-        data += f' fontcolor = "yellow"'
-    
-    elif fuente == "rojo" or fuente == "#ff0000":
-        data += f' fontcolor = "red"'
-    
-    elif fuente == "verde" or fuente == "#008000":
-        data += f' fontcolor = "green"'
-
-    elif fuente == "azul" or fuente == "0000ff":
-        data += f' fontcolor = "blue"'
-    
-    elif fuente == "celeste" or fuente == "#87ceeb":
-        data += f' fontcolor = "skyblue"'
-    
-    elif fuente == "negro" or fuente == "#000000":
-        data += f' fontcolor = "black"'
-    
-    elif fuente == "cafe" or fuente == "#a52a2a":
-        data += f' fontcolor = "brow"'
-    
-    elif fuente == "gris" or fuente == "#808080":
-        data += f' fontcolor = "gray"'
-    
-    elif fuente == "rosado" or fuente == "rosa" or fuente == "#ff0c0cb":
-        data += f' fontocolor = "pink"'
-    
-    elif fuente == "purpura" or fuente == "morado" or fuente == "#800080":
-        data += f' fontcolor = "purple"'
-    
-    elif fuente == "blanco" or fuente == "#ffffff":
-        data += f' fontcolor = "white"'
-    
-    elif fuente == "naranja" or fuente == "anaranjado" or fuente == "#ffa500":
-        data += f' fontcolor = "orange"'
-    
-
-    #FORMA NODO
-
-    if (formaNodo.operar(None)).lower() == "cuadrado":
-        data += f' shape = "square"'
-    
-    elif (formaNodo.operar(None)).lower() == "circulo":
-        data += f' shape = "circle"'
-    
-    elif (formaNodo.operar(None)).lower() == "triangulo":
-        data += f' shape = "triangle"'
-    
-    elif (formaNodo.operar(None)).lower() == "elipse":
-        data += f' shape = "ellipse"'
-    
-    elif (formaNodo.operar(None)).lower() == "ovalo":
-        data += f' shape = "oval"'
-    
-    elif (formaNodo.operar(None)).lower() == "rombo":
-        data += f' shape = "diamond"'
-    
-    elif (formaNodo.operar(None)).lower() == "pentagono":
-        data += f' shape = "pentagon"'
-    
-    elif (formaNodo.operar(None)).lower() == "hexagono":
-        data += f' shape = "hexagon"'
-    
-    elif (formaNodo.operar(None)).lower() == "hexagono":
-        data += f' shape = "hexagon"'
-    
-    elif (formaNodo.operar(None)).lower() == "heptagono":
-        data += f' shape = "septagon"'
-    
-    elif (formaNodo.operar(None)).lower() == "octagono":
-        data += f' shape = "octagon"'
-    
-    elif (formaNodo.operar(None)).lower() == "paralelogramo":
-        data += f' shape = "parallelogram"'
-    
-    elif (formaNodo.operar(None)).lower() == "estrella":
-        data += f' shape = "star"'
-    
-    data += ' style = filled]\n'
-
-
-    data += f'label = "{textoTitulo.operar(None)}"\n'
-
-    data += sumatoriaData
-
-    data += '\n}'
-
-    with open('Myejemplo_graphviz.dot', 'w') as f:         
-        f.write(data)
-
-    os.system('dot -Tpng Myejemplo_graphviz.dot -o Operaciones.png')
-
-    print(data)
