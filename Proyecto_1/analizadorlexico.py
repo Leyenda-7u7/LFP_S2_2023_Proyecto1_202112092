@@ -223,7 +223,7 @@ def operar2():
 def getErrores():
     global lista_errores
     contador = 1
-    print('{')
+
     dataErrores = '{\n'
 
     while lista_errores:
@@ -237,7 +237,7 @@ def getErrores():
 
     dataErrores +='}'
 
-    print('}')
+    print('JSON de errores creados')
 
     with open('RESULTADOS_202112092.json', 'w') as f:         
         f.write(dataErrores)

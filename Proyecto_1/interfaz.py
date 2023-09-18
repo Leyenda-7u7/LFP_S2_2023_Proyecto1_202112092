@@ -41,7 +41,6 @@ def analizar():
     for respuesta in respuestas_Operaciones:
         if isinstance(respuesta.operar(None), int) or isinstance(respuesta.operar(None), float):
             Resultados += f"Operacion {Operacion} --> {respuesta.tipo.operar(None)} = {respuesta.operar(None)}\n"
-            print(respuesta.operar(None))
             Operacion += 1
 
     texto.delete("1.0", tk.END)  # Limpia el contenido actual del widget de resultado_text

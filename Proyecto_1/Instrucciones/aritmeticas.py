@@ -20,21 +20,21 @@ class Aritmeticas(Expression):
             rightValue = self.right.operar(arbol) #aqui me devuelve el valor de un numero ya sea entero o decimal
     
         if self.tipo.operar(arbol) == 'Suma':
-            return leftValue + rightValue
+            return round(leftValue + rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Resta':
-            return leftValue - rightValue
+            return round(leftValue - rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Multiplicacion':
-            return leftValue * rightValue
+            return round(leftValue * rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Division':
-            return leftValue / rightValue
+            return round(leftValue / rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Modulo':
-            return leftValue % rightValue
+            return round(leftValue % rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Potencia':
-            return leftValue ** rightValue
+            return round(leftValue ** rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Raiz':
-            return leftValue ** (1/rightValue)
+            return round(leftValue ** (1/rightValue), 2)
         elif self.tipo.operar(arbol)  == 'Inverso':
-            return 1/leftValue
+            return round(1/leftValue, 2)
         else:
             return None
         
