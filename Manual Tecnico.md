@@ -28,81 +28,121 @@ Guatemala, septiembre del 2023
 
 
 
+
+
+
+
+
 # Introduccion
 
-El siguiente programa que se le presenta a continuación es un sistema desarrolla en el ambiente Python donde se le presentaran un analizador léxico el cual generara operaciones a través de la lectura de su archivo JSON en cuestión con una interfaz amigable a su persona.
+Este manual describe los pasos necesarios para cualquier persona que tenga ciertas bases de sistemas pueda realizar el código implementado en Python donde se crea un código para un sistema de muestras de películas utilizando POO (Programación Orientada a Objetos) de la misma manera Tkinter y así poder implementarlo de la mejor manera. El siguiente código se explicó de la manera más detalla posible para la mejor compresión de la persona.
 
 
 
 # Objetivos
 
-* Brindar la información necesaria para poder  representar la funcionalidad.
+* Brindar la información necesaria para poder  representar la funcionalidad técnica de la estructura, diseño y definición del aplicativo.
 
-* Otorgarle al usuario una manera más eficiente para poder hacer gestiones de sus películas favoritas para otórgale una mejor experiencia. 
-
-
+* Describir las herramientas utilizadas para el diseño y desarrollo del prototipo
 
 
+# Requerimientos de funcion
 
 
+|          Requerimientos      |     Descripcion |                                      
+|----------------|-------------------------------|
+|Visual Studio Code            |Se recomienda el uso de Visual Studio Code que fue la versión donde se programó el sistema de información. |       
+|Tkinter         |Conocimiento sobre el uso de las librerias tkinter para el uso de la interfaz grafica |            |            |
 
+
+##	Desarrollo
+
+[![Crono.jpg](https://i.postimg.cc/0jqCq0fW/Crono.jpg)](https://postimg.cc/0McSYmhD)
 
  
 
 
 
-#	OPERACIONES DEL SISTEMA
+#	Contenido tecnico
 
-El presente manual está organizado de acuerdo a la secuencia de ingreso de las pantallas del sistema de la siguiente manera:
-1.	Abrir Archivo
-2.	Guardar y Guardar como
-3.	Analizar
-4.	Errores
-5.	Reporte
-6.	Cerrar Ventana
+El código presenta la definición de una clase en Python llamada `LToken`. La clase tiene cuatro atributos: `nombre`, `lexema`, `fila` y `columna`, todos de tipo `str` o `int`. El método constructor `__init__` toma como argumentos cuatro parámetros, `nombre`, `lexema`, `fila` y `columna`, que son asignados a los respectivos atributos de la instancia creada.
 
+El método `__str__` devuelve una representación en forma de cadena de la instancia de la clase, en la que se muestra el valor de cada uno de sus atributos.
 
+La variable `Instrucciones` es una lista de cadenas que contiene los nombres de varios tipos de funciones.
 
-#### 1.	Abrir Archivo
+		
+    def instruccion(cadena):
+        global n_lineas
+        global n_columnas
+        global lista_lexemas
 
-Al iniciar el programa le mostrará en su interfaz una pantalla con las siguientes características; donde usted presionara el botón de “Abrir Archivos” y de esa manera se le abrirá su explorador de archivos donde usted seleccionara el archivo que sea subir para su lectura
-[![cap-1.png](https://i.postimg.cc/1zsYQq6k/cap-1.png)](https://postimg.cc/dhN9RD56)
-
-[![Captura-de-pantalla-2023-09-18-170424.png](https://i.postimg.cc/CK7rLxsz/Captura-de-pantalla-2023-09-18-170424.png)](https://postimg.cc/3yyFt76T)
-
-Al presionar el botón “abrir”, si realizo los pasos de manera correcta la ventana debe aparecer de la siguiente manera. 
-
-[![Captura-de-pantalla-2023-09-18-170528.png](https://i.postimg.cc/3JpTr24N/Captura-de-pantalla-2023-09-18-170528.png)](https://postimg.cc/tYXf2ZzG)
-
-#### 2.	Guardar y Guardar Como
-
-Permite guardar el archivo que está siendo editado sin necesidad de abrir su explorador de archivos. 
-Permite guardar el archivo que está siendo editado, pero de tal manera que su explorador de archivos se abrirá para que guarde el archivo con un nuevo nombre que usted desee. 
+Para el analixar lexico se implemento la clase que contiene métodos para identificar y generar tokens a partir de una cadena de entrada dada llamada `AnalizadorLexico`. La clase tiene un `analizar` método que toma una cadena de entrada y la analiza carácter por carácter para identificar y generar tokens.
 
 
-[![Cap-2.png](https://i.postimg.cc/VNZTWNr2/Cap-2.png)](https://postimg.cc/yJ9vVsTT)
 
-#### 3.	Analizar
+Se definido un método llamado `instrucciones` y recibe una cada dónde se manda a llamar a la línea y columna, por lo mismo en esta parte se va leyendo partes del archivo JSON donde se usaron condicionales para ir viendo que cuando entra una palabra reservada e ir armando cada lexema. Esto fue posible por un “while” para tener ciclos y así seguir dentro de la función mientras se cumplan ciertas condiciones, como notan se usa un puntero el cual se iguala a cero para no acumular demasiada información.
 
-Analiza el texto y mostrará los elementos reconocidos, esto quiere decir que generar las operaciones que le indico en el archivo JSON como se presenta a continuación
+Junto con esto se crearon la clase llamada un diccionario de palabras reservadas las cuales son:
 
-[![cap-3.png](https://i.postimg.cc/3NXnVrN8/cap-3.png)](https://postimg.cc/fSbc0NYp)
+     'CREARBD'           : 'CrearBD',
+    'ELIMINARBD'        : 'EliminarBD',
+    'CREARCOLECION'     : 'EliminarColeccion',
+    'INSERTARUNICO'     : 'InsertarUnico',
+    'ACTUALIZARUNICO'   : 'ActualizarUnico', 
+    'ELIMINARUNICO'     : 'EliminarUnico',
+    'BUSCARTODO'        : 'BuscarTodo',
+    'BUSCARUNICO'       : 'BuscarUnico',  
+    'RCONFIGURACION'    : 'Configuraciones',
+    'RTEXTO'            : 'texto',
+    'RCOLORFONDONODO'   : 'color-fondo-nodo',
+    'RCOLORFUENTENODO'  : 'color-fuente-nodo',
+    'RFORMANODO'        : 'forma-nodo',  
+    'COMA'              : ',',
+    'PUNTO'             : '.',
+    'DPUNTO'            : ':',
+    'CORI'              : '(',
+    'CORD'              : ')',
+    'LLAVEI'            : '{',
+    'LLAVED'            : '}',
 
 
-#### 4.	Errores
+La clase tiene varios métodos, pero el principal es `Analizadorlexico`. Es método es el encargado de leer una lista de tokens que se le pasan como argumento, y de acuerdo a los comandos definidos en la lista "comandos", ejecuta distintas acciones dependiendo del comando reconocido en el token actual.
 
-En esta operación le mostrara los errores del último archivo compilado el cual generar un nuevo archivo JSON como se le presenta a continuación:
+Cada comando está definido como un método dentro de la clase cada una con su funcion las cuales son `CrearBD`, `EliminarBD`. Estos métodos ejecutan distintas acciones según el comando reconocido.
 
+Se creo un método llamado `armar_lexema` aquí recorremos nuestra cadena y si leímos unas comillas se arma el lexema, para que no falle se retorna un None.
 
-[![cap-4.png](https://i.postimg.cc/t4KnZ3Dc/cap-4.png)](https://postimg.cc/5Xm2DFh5)
-#### 5.	Reporte
+    def armar_lexema(cadena):
+        global n_lineas
+        global n_columnas
+        global lista_lexemas
+        lexema = ''
+        puntero = ''
+        for char in cadena:    
+                puntero += char
+                if char == '\"':        
+                    return lexema, cadena[len(puntero):]
+                else:
+                    lexema += char
+        return None, None
 
-Este boton le generar una imagen de como se realizaron dichas operaciones para que pueda observar que en todo momento se respeto la jerarquia de operaciones.
+Aquí en operaciones se define las operaciones a realizar todo esto fue posible con el métodos abstractos.
 
-[![cap-5.png](https://i.postimg.cc/RCYSZMgs/cap-5.png)](https://postimg.cc/V5jQ7cQn)
+ # Interfaz
+ 
+En la interfaz se llamaron las funciones del archivo analizarolexico para que asi crear otras funciones que se usaran en los botones como lo fueron las funciones de `abrir_archivo`, `guardar_archivo`, `analizar`, `buscar_errores`, `gh`, este ultimo para generar la parte grafica a travez de Graphiz. Se coloco el nombre y el tamaño de la pantalla
 
-#### 6.	Salir
+Para los Frames se necesitaron botones donde cada uno cuenta con un comando que les ayuda a realizar dichas operaciones y mostrar de manera mas cómoda al usuario como usar la interfaz gráfica en cuestión. Con el método `Button` se crearon los botones y se les dio color junto con su forma.
 
-Con esta opción se cerrará la aplicación. 
+[![Captura-de-pantalla-2023-09-18-174914.png](https://i.postimg.cc/2jFLKLTp/Captura-de-pantalla-2023-09-18-174914.png)](https://postimg.cc/xq8dkCWg)
 
-[![cap-6.png](https://i.postimg.cc/NLhL9YkH/cap-6.png)](https://postimg.cc/vxzGkJjY)
+La interfaz seria la siguiente:
+
+[![cap-7.png](https://i.postimg.cc/W1cKbKgq/cap-7.png)](https://postimg.cc/SJVVggZm)
+
+## AFD del analizar lexico
+
+Este grafo marca de manera teorica como se utilozo los AFD para comprender como poder aplicar la logica de programacion y asi poder llevarla acabo de manera ordenada y funcional.
+
+[![cap-8.png](https://i.postimg.cc/CLh7PgGN/cap-8.png)](https://postimg.cc/QVzcCvn9)
