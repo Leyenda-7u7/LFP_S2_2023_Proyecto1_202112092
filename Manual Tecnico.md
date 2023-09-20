@@ -85,26 +85,6 @@ Se definido un método llamado `instrucciones` y recibe una cada dónde se manda
 
 Junto con esto se crearon la clase llamada un diccionario de palabras reservadas las cuales son:
 
-<<<<<<< HEAD
-     'CREARBD'           : 'CrearBD',
-    'ELIMINARBD'        : 'EliminarBD',
-    'CREARCOLECION'     : 'EliminarColeccion',
-    'INSERTARUNICO'     : 'InsertarUnico',
-    'ACTUALIZARUNICO'   : 'ActualizarUnico', 
-    'ELIMINARUNICO'     : 'EliminarUnico',
-    'BUSCARTODO'        : 'BuscarTodo',
-    'BUSCARUNICO'       : 'BuscarUnico',  
-    'RCONFIGURACION'    : 'Configuraciones',
-    'RTEXTO'            : 'texto',
-    'RCOLORFONDONODO'   : 'color-fondo-nodo',
-    'RCOLORFUENTENODO'  : 'color-fuente-nodo',
-    'RFORMANODO'        : 'forma-nodo',  
-    'COMA'              : ',',
-    'PUNTO'             : '.',
-    'DPUNTO'            : ':',
-    'CORI'              : '(',
-    'CORD'              : ')',
-=======
 
     'OPERACION'         : 'Operacion',
     'RVALOR1'            : 'Valor1',
@@ -128,15 +108,10 @@ Junto con esto se crearon la clase llamada un diccionario de palabras reservadas
     'DPUNTO'            : ':',
     'CORI'              : '[',
     'CORD'              : ']',
->>>>>>> 4d4dd44974eb71b13546ba876f5c599213b19822
     'LLAVEI'            : '{',
     'LLAVED'            : '}',
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4d4dd44974eb71b13546ba876f5c599213b19822
 La clase tiene varios métodos, pero el principal es `Analizadorlexico`. Es método es el encargado de leer una lista de tokens que se le pasan como argumento, y de acuerdo a los comandos definidos en la lista "comandos", ejecuta distintas acciones dependiendo del comando reconocido en el token actual.
 
 Cada comando está definido como un método dentro de la clase cada una con su funcion las cuales son `CrearBD`, `EliminarBD`. Estos métodos ejecutan distintas acciones según el comando reconocido.
