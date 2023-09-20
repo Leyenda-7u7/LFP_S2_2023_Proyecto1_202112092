@@ -1,1 +1,4 @@
-# LFP_S2_2023_Proyecto1_202112092
+# Brandon Eduardo Pablo Garcia
+### 202112092
+Laboratorio de LFP B+
+
