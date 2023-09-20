@@ -85,26 +85,32 @@ Se definido un método llamado `instrucciones` y recibe una cada dónde se manda
 
 Junto con esto se crearon la clase llamada un diccionario de palabras reservadas las cuales son:
 
-     'CREARBD'           : 'CrearBD',
-    'ELIMINARBD'        : 'EliminarBD',
-    'CREARCOLECION'     : 'EliminarColeccion',
-    'INSERTARUNICO'     : 'InsertarUnico',
-    'ACTUALIZARUNICO'   : 'ActualizarUnico', 
-    'ELIMINARUNICO'     : 'EliminarUnico',
-    'BUSCARTODO'        : 'BuscarTodo',
-    'BUSCARUNICO'       : 'BuscarUnico',  
-    'RCONFIGURACION'    : 'Configuraciones',
-    'RTEXTO'            : 'texto',
-    'RCOLORFONDONODO'   : 'color-fondo-nodo',
-    'RCOLORFUENTENODO'  : 'color-fuente-nodo',
-    'RFORMANODO'        : 'forma-nodo',  
+
+    'OPERACION'         : 'Operacion',
+    'RVALOR1'            : 'Valor1',
+    'RVALOR2'           : 'Valor2',
+    'RSUMA'             : 'Suma',
+    'RMULTIPLICACION'   : 'Multiplicacion', 
+    'RDIVISION'         : 'Division',
+    'RPOTENCIA'         : 'Potencia',
+    'RRAIZ'             : 'Raiz',   
+    'RINVERSO'          : 'Inverso',
+    'RSENO'             : 'Seno',
+    'RCOSENO'           : 'Coseno',
+    'RTANGENTE'         : 'Tangente',
+    'RMODULO'           : 'Modulo',
+    'RTEXTO'            : 'Texto',
+    'RCOLORFONDONODO'   : 'Color-Fondo-Nodo',
+    'RCOLORFUENTENODO'  : 'Color-Fuente-Nodo',
+    'RFORMANODO'        : 'Forma-Nodo',  
     'COMA'              : ',',
     'PUNTO'             : '.',
     'DPUNTO'            : ':',
-    'CORI'              : '(',
-    'CORD'              : ')',
+    'CORI'              : '[',
+    'CORD'              : ']',
     'LLAVEI'            : '{',
     'LLAVED'            : '}',
+
 
 
 La clase tiene varios métodos, pero el principal es `Analizadorlexico`. Es método es el encargado de leer una lista de tokens que se le pasan como argumento, y de acuerdo a los comandos definidos en la lista "comandos", ejecuta distintas acciones dependiendo del comando reconocido en el token actual.
