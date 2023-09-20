@@ -4,28 +4,31 @@ from Instrucciones.errores import *
 from Instrucciones.Texto import *
 from Abstract.lexema import *
 from Abstract.numero import *
-import os
 
 #Este es un listado de palabras reservadas como lo son multiplicacion y asi, RTEXTO es un token
 reserved = { 
-    'CREARBD'           : 'CrearBD',
-    'ELIMINARBD'        : 'EliminarBD',
-    'CREARCOLECION'     : 'EliminarColeccion',
-    'INSERTARUNICO'     : 'InsertarUnico',
-    'ACTUALIZARUNICO'   : 'ActualizarUnico', 
-    'ELIMINARUNICO'     : 'EliminarUnico',
-    'BUSCARTODO'        : 'BuscarTodo',
-    'BUSCARUNICO'       : 'BuscarUnico',  
-    'RCONFIGURACION'    : 'Configuraciones',
-    'RTEXTO'            : 'texto',
-    'RCOLORFONDONODO'   : 'color-fondo-nodo',
-    'RCOLORFUENTENODO'  : 'color-fuente-nodo',
-    'RFORMANODO'        : 'forma-nodo',  
+    'OPERACION'         : 'Operacion',
+    'RVALOR1'            : 'Valor1',
+    'RVALOR2'           : 'Valor2',
+    'RSUMA'             : 'Suma',
+    'RMULTIPLICACION'   : 'Multiplicacion', 
+    'RDIVISION'         : 'Division',
+    'RPOTENCIA'         : 'Potencia',
+    'RRAIZ'             : 'Raiz',   
+    'RINVERSO'          : 'Inverso',
+    'RSENO'             : 'Seno',
+    'RCOSENO'           : 'Coseno',
+    'RTANGENTE'         : 'Tangente',
+    'RMODULO'           : 'Modulo',
+    'RTEXTO'            : 'Texto',
+    'RCOLORFONDONODO'   : 'Color-Fondo-Nodo',
+    'RCOLORFUENTENODO'  : 'Color-Fuente-Nodo',
+    'RFORMANODO'        : 'Forma-Nodo',  
     'COMA'              : ',',
     'PUNTO'             : '.',
     'DPUNTO'            : ':',
-    'CORI'              : '(',
-    'CORD'              : ')',
+    'CORI'              : '[',
+    'CORD'              : ']',
     'LLAVEI'            : '{',
     'LLAVED'            : '}',
 }
@@ -228,7 +231,7 @@ def getErrores():
 
     while lista_errores:
         error = lista_errores.pop(0)
-        print(str(error.operar(contador)), ',')
+        #print(str(error.operar(contador)), ',')
     
         dataErrores += error.operar(contador)
         dataErrores += ',\n'
@@ -237,9 +240,8 @@ def getErrores():
 
     dataErrores +='}'
 
-    print('JSON de errores creados')
+    #print('JSON de errores creados')
 
     with open('RESULTADOS_202112092.json', 'w') as f:         
         f.write(dataErrores)
-
-    
+        

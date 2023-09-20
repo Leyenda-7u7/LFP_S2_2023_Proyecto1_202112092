@@ -28,6 +28,15 @@ def guardar_archivo():
             file.write(texto.get(1.0, tk.END))
 
 def analizar():
+    instruccion(texto.get("1.0", tk.END))  # Obtener el texto del widget de texto
+    respuestas = operar2()
+    resultado = ""
+    for respuesta in respuestas:
+        resultado += str(respuesta.operar(None)) + "\n"
+    texto.delete("1.0", tk.END)  # Limpia el contenido actual del widget de resultado_text
+    texto.insert('1.0', format(resultado))
+    
+def analizar():
     data = texto.get("1.0", tk.END)  # Obtener el contenido del widget de texto
     instrucciones = instruccion(data)
     respuestas_Operaciones = operar2()
@@ -39,8 +48,8 @@ def analizar():
     salto = "\n"
 
     for respuesta in respuestas_Operaciones:
-        if isinstance(respuesta.operar(None), int) or isinstance(respuesta.operar(None), float):
-            Resultados += f"Operacion {Operacion} --> {respuesta.tipo.operar(None)} = {respuesta.operar(None)}\n"
+        if isinstance(respuesta.operar(None), int) or isinstance(respuesta.operar(None), float) == True:
+            Resultados += str(f"Operacion {Operacion} --> {respuesta.tipo.operar(None)} = {respuesta.operar(None)}\n")
             Operacion += 1
 
     texto.delete("1.0", tk.END)  # Limpia el contenido actual del widget de resultado_text
@@ -98,9 +107,9 @@ def gh():
     
 def Graphviz(respuestas_Operaciones):
         Titulo = "Realizacion de Operaciones"
-        colorNodo = "Yellow"
-        fuenteNodo = "Red"
-        formaNodo = "Circle"
+        colorNodo = "yellow"
+        fuenteNodo = "black"
+        formaNodo = "circle "
         try:
             print('---------------------------------------------')
             for respuesta in respuestas_Operaciones:
@@ -254,3 +263,5 @@ ventana.configure(bg='#ECECEC')
 texto.configure(bg='#F9F9F9')
 ventana.configure(bg='#A1AFE6') #EL color del fondo
 ventana.mainloop()
+
+

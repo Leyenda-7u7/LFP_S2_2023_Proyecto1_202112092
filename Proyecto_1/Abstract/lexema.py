@@ -1,17 +1,16 @@
 from Abstract.abstract import Expression
 
 class Lexema(Expression):
-    
-    def __init__(self, lexema, fila, columna):
+
+    def __init__(self, lexema,  fila, columna):
         self.lexema = lexema
         super().__init__(fila, columna)
-        
-    def operar(self, arbol):
+
+    def operar(self, arbol):   #! Retorna mi Lexema
         return self.lexema
-    
-    
-    def getFila(self):
+
+    def getFila(self):              #! Retorna la fila
         return super().getFila()
-    
-    def getColumna(self):
+
+    def getColumna(self):           #! Retorna la columna
         return super().getColumna()

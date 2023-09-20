@@ -12,13 +12,23 @@ class Aritmeticas(Expression):
 #Recursivdad
 
     def operar(self, arbol):
-        leftValue = ''
+        leftValue = 0 if self.left is None else self.left.operar(arbol)
+        rightValue = 0 if self.right is None else self.right.operar(arbol)
+
+        # Asegurarse de que leftValue y rightValue sean números
+        if not isinstance(leftValue, (int, float)):
+            leftValue = 0
+        if not isinstance(rightValue, (int, float)):
+            rightValue = 0
+        '''leftValue = ''
         rightValue = ''
+
         if self.left != None:
-            leftValue = self.left.operar(arbol)   #aqui me devuelve el valor de un numero ya sea entero o decimal
+            leftValue = self.left.operar(arbol)
         if self.right != None:
-            rightValue = self.right.operar(arbol) #aqui me devuelve el valor de un numero ya sea entero o decimal
-    
+            rightValue = self.right.operar(arbol)'''
+
+            
         if self.tipo.operar(arbol) == 'Suma':
             return round(leftValue + rightValue, 2)
         elif self.tipo.operar(arbol)  == 'Resta':
