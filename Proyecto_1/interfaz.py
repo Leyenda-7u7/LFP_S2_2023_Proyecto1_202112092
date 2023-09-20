@@ -54,7 +54,7 @@ def analizar():
 
     texto.delete("1.0", tk.END)  # Limpia el contenido actual del widget de resultado_text
     texto.insert('1.0', format(Resultados))
-
+    messagebox.showinfo("Éxito", "Se analizo correctamente.")
 
 def buscar_errores():
     lista_errores = getErrores()
@@ -89,14 +89,6 @@ def gh():
         # Generar la imagen PNG desde el archivo DOT
         subprocess.run(["dot", "-Tpng", "Operaciones.dot", "-o", "Imagen Operaciones.png"])
 
-        print("...............................................................")
-        print("            ** COMANDOS DE GRAPHVIZ **               ")
-        print("")
-        print(contenido)
-        print("...............................................................")
-        print("")
-        print("Imagen generada como Operaciones.png")
-
     except Exception as e:
         messagebox.showinfo("Se produjo un error: ", str(e))
         messagebox.showinfo("Mensaje", f"Error al generar el archivo de salida, Verificar el Archivo de entrada.")
@@ -111,17 +103,15 @@ def Graphviz(respuestas_Operaciones):
         fuenteNodo = "black"
         formaNodo = "circle "
         try:
-            print('---------------------------------------------')
+
             for respuesta in respuestas_Operaciones:
                 if isinstance(respuesta.operar(None), int) or isinstance(respuesta.operar(None), float) == True:
                     pass
                 else:
                     temporal = str(respuesta.texto.operar(None)).lower()
-                    print(respuesta.texto.operar(None))
-                    print(respuesta.ejecutarT())
                     if respuesta.ejecutarT() == "texto":  # Podemos recibir cualquier texto
                         Titulo = str(respuesta.texto.operar(None))
-                    if respuesta.ejecutarT() == "color-fondo-nodo":  # Vericar el color del nodo a asignar
+                    if respuesta.ejecutarT() == "fondo":  # Vericar el color del nodo a asignar
                         if temporal == ("amarillo" or "yellow"):
                             temporal = "yellow"
                             colorNodo = temporal
@@ -138,7 +128,7 @@ def Graphviz(respuestas_Operaciones):
                             temporal = "purple"
                             colorNodo = temporal
 
-                    if respuesta.ejecutarT() == "color-fuente-nodo":  # Vericar la fuente del nodo a asignar
+                    if respuesta.ejecutarT() == "fuente":  # Vericar la fuente del nodo a asignar
 
                         if temporal == ("amarillo" or "yellow"):
                             temporal = "yellow"
@@ -159,7 +149,7 @@ def Graphviz(respuestas_Operaciones):
                             temporal = "black"
                             fuenteNodo = temporal
 
-                    if respuesta.ejecutarT() == "forma-nodo":  # Vericar el formato de nodo a asignar
+                    if respuesta.ejecutarT() == "forma":  # Vericar el formato de nodo a asignar
                         if temporal == ("circulo" or "circle"):
                             temporal = "circle"
                             formaNodo = temporal

@@ -12,38 +12,28 @@ class Aritmeticas(Expression):
 #Recursivdad
 
     def operar(self, arbol):
-        leftValue = 0 if self.left is None else self.left.operar(arbol)
-        rightValue = 0 if self.right is None else self.right.operar(arbol)
-
-        # Asegurarse de que leftValue y rightValue sean números
-        if not isinstance(leftValue, (int, float)):
-            leftValue = 0
-        if not isinstance(rightValue, (int, float)):
-            rightValue = 0
-        '''leftValue = ''
+        leftValue = ''
         rightValue = ''
-
         if self.left != None:
-            leftValue = self.left.operar(arbol)
+            leftValue = self.left.operar(arbol)   #aqui me devuelve el valor de un numero ya sea entero o decimal
         if self.right != None:
-            rightValue = self.right.operar(arbol)'''
-
-            
-        if self.tipo.operar(arbol) == 'Suma':
+            rightValue = self.right.operar(arbol) #aqui me devuelve el valor de un numero ya sea entero o decimal
+    
+        if self.tipo.operar(arbol) == 'suma':
             return round(leftValue + rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Resta':
+        elif self.tipo.operar(arbol)  == 'resta':
             return round(leftValue - rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Multiplicacion':
+        elif self.tipo.operar(arbol)  == 'multiplicacion':
             return round(leftValue * rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Division':
+        elif self.tipo.operar(arbol)  == 'division':
             return round(leftValue / rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Modulo':
+        elif self.tipo.operar(arbol)  == 'modulo':
             return round(leftValue % rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Potencia':
+        elif self.tipo.operar(arbol)  == 'potencia':
             return round(leftValue ** rightValue, 2)
-        elif self.tipo.operar(arbol)  == 'Raiz':
+        elif self.tipo.operar(arbol)  == 'raiz':
             return round(leftValue ** (1/rightValue), 2)
-        elif self.tipo.operar(arbol)  == 'Inverso':
+        elif self.tipo.operar(arbol)  == 'inverso':
             return round(1/leftValue, 2)
         else:
             return None

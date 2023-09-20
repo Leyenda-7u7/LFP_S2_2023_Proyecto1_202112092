@@ -16,16 +16,16 @@ class Texto(Expression):
         if self.texto != None:
             tipo = self.tipo
 
-        if tipo == "Texto":
+        if tipo == "texto":
             return tipo
 
-        elif tipo == "Fondo":
+        elif tipo == "fondo":
             return tipo
 
-        elif tipo == "Fuente":
+        elif tipo == "fuente":
             return tipo
 
-        elif tipo == "Forma":
+        elif tipo == "forma":
             return tipo
 
         else:

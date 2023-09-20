@@ -7,23 +7,23 @@ from Abstract.numero import *
 
 #Este es un listado de palabras reservadas como lo son multiplicacion y asi, RTEXTO es un token
 reserved = { 
-    'OPERACION'         : 'Operacion',
-    'RVALOR1'            : 'Valor1',
-    'RVALOR2'           : 'Valor2',
-    'RSUMA'             : 'Suma',
-    'RMULTIPLICACION'   : 'Multiplicacion', 
-    'RDIVISION'         : 'Division',
-    'RPOTENCIA'         : 'Potencia',
-    'RRAIZ'             : 'Raiz',   
-    'RINVERSO'          : 'Inverso',
-    'RSENO'             : 'Seno',
-    'RCOSENO'           : 'Coseno',
-    'RTANGENTE'         : 'Tangente',
-    'RMODULO'           : 'Modulo',
-    'RTEXTO'            : 'Texto',
-    'RCOLORFONDONODO'   : 'Color-Fondo-Nodo',
-    'RCOLORFUENTENODO'  : 'Color-Fuente-Nodo',
-    'RFORMANODO'        : 'Forma-Nodo',  
+    'OPERACION'         : 'operacion',
+    'RVALOR1'           : 'valor1',
+    'RVALOR2'           : 'valor2',
+    'RSUMA'             : 'suma',
+    'RMULTIPLICACION'   : 'multiplicacion', 
+    'RDIVISION'         : 'division',
+    'RPOTENCIA'         : 'potencia',
+    'RRAIZ'             : 'raiz',   
+    'RINVERSO'          : 'inverso',
+    'RSENO'             : 'seno',
+    'RCOSENO'           : 'coseno',
+    'RTANGENTE'         : 'tangente',
+    'RMODULO'           : 'modulo',
+    'RTEXTO'            : 'texto',
+    'RCOLORFONDONODO'   : 'fondo',
+    'RCOLORFUENTENODO'  : 'fuente',
+    'RFORMANODO'        : 'forma',  
     'COMA'              : ',',
     'PUNTO'             : '.',
     'DPUNTO'            : ':',
@@ -166,14 +166,14 @@ def operar():
     
     while lista_lexemas:                            
         lexema = lista_lexemas.pop(0)       
-        if lexema.operar(None) == 'Operacion':  
+        if lexema.operar(None) == 'operacion':  
             if lista_lexemas:       
                 operacion = lista_lexemas.pop(0)
-        elif lexema.operar(None) == 'Valor1':
+        elif lexema.operar(None) == 'valor1':
             n1 = lista_lexemas.pop(0)
             if n1.operar(None) == '[':
                 n1 = operar()
-        elif lexema.operar(None) == 'Valor2':
+        elif lexema.operar(None) == 'valor2':
             n2 = lista_lexemas.pop(0)
             if n2.operar(None) == '[':
                 n2 = operar()
@@ -184,21 +184,21 @@ def operar():
             text = lista_lexemas.pop(0)
             return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
 
-        if lexema.operar(None) == 'color-fondo-nodo':
+        if lexema.operar(None) == 'fondo':
 
-            tipo = 'color-fondo-nodo'
+            tipo = 'fondo'
             text = lista_lexemas.pop(0)
             return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
 
-        if lexema.operar(None) == 'color-fuente-nodo':
+        if lexema.operar(None) == 'fuente':
 
-            tipo = 'color-fuente-nodo'
+            tipo = 'fuente'
             text = lista_lexemas.pop(0)
             return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
 
-        if lexema.operar(None) == 'forma-nodo':
+        if lexema.operar(None) == 'forma':
 
-            tipo = 'forma-nodo'
+            tipo = 'forma'
             text = lista_lexemas.pop(0)
             return Texto(text, tipo ,  f'Inicio: {text.getFila()}', f'Fin: {text.getColumna()}')
         
@@ -206,7 +206,7 @@ def operar():
         if operacion and n1 and n2:
             return Aritmeticas(n1, n2, operacion, f'Inicio: {operacion.getFila()}:{operacion.getColumna()}', f'Fin: {n2.getFila()}:{n2.getColumna()}') 
 
-        elif operacion and n1 and operacion.operar(None) == ('Seno' or 'Coseno' or 'Tangente'):
+        elif operacion and n1 and operacion.operar(None) == ('seno' or 'coseno' or 'tangente'):
             return Trigonometricas(n1, operacion, f'Inicio: {operacion.getFila()}:{operacion.getColumna()}', f'Fin: {n1.getFila()}:{n1.getColumna()}')
     return None
 
